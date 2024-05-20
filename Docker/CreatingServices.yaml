@@ -1,0 +1,53 @@
+# version: '3'
+
+# services:
+#   web_app:
+#     image: nginx:latest
+#     ports:
+#       - "8080:80"
+#     networks:
+#       - my_network
+
+#   jenkins_server:
+#     image: jenkins/jenkins:lts
+#     ports:
+#       - "8081:8080"
+#     networks:
+#       - my_network
+
+# networks:
+#   my_network:
+#     driver: bridge
+
+
+
+# Docker Compose file version
+version: '3'
+
+# Define services (containers)
+services:
+  # Nginx web server service
+  web_app:
+    image: nginx:latest  # Use the latest nginx image
+    ports:
+      - "8080:80"  # Map host port 8080 to container port 80
+    networks:
+      - my_network  # Connect to the custom bridge network named "my_network"
+
+  # Jenkins server service
+  jenkins_server:
+    image: jenkins/jenkins:lts  # Use the latest Jenkins LTS image
+    ports:
+      - "8081:8080"  # Map host port 8081 to container port 8080
+    networks:
+      - my_network  # Connect to the same "my_network" custom bridge network
+
+# Define custom bridge network
+networks:
+  my_network:
+    driver: bridge  # Use the bridge network driver
+
+
+
+
+
